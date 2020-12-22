@@ -10,17 +10,18 @@ body {
   align-content: center;
   width: 400px;
   height: 600px;
-  background-color: black;
+  background-color: #272626;
   border-radius: 10px;
 }
 
 .display {
   display: inline-block;
-  background-color: gray;
+  background-color: #676565;
   width: 360px;
   height: 100px;
   margin: 20px 20px 10px 20px;
   border-radius: 10px;
+  box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.5) inset;
 }
 
 .container .buttons {
@@ -36,11 +37,34 @@ button {
   text-decoration: none;
   outline: none;
   border: solid 0 transparent;
-  background-color: gray;
-  font-size: 25px;
+  background-color: #676565;
+  font-size: 28px;
+  color: white;
+  box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.5);
+  transition: all 0.15s ease-in-out;
+}
+
+button:hover {
+  transform: translateY(-2px);
+}
+
+.digit:hover {
+  background-color: #a7a5a5;
+}
+
+.ac:hover {
+  background-color: #ff6666;
+}
+
+.operator:hover {
+  background-color: #ffa366;
 }
 
 .buttons .equals {
   grid-column: 3 / 5;
   border-radius: 50px;
+}
+
+.equals:hover {
+  background-color: #85e085;
 }
