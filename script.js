@@ -55,6 +55,17 @@ for (let i = 0; i <buttons.length; i++) {
         } else if (buttons[i].classList.contains('decimal') && displayValue.indexOf('.') === -1) {
             displayValue += buttons[i].value;
             updateDisplay();
+        } else if (buttons[i].classList.contains('percent') && displayValue != '' && displayValue != '0') {
+            displayValue = `${parseFloat(displayValue) / 100}`
+            updateDisplay();
+        } else if (buttons[i].classList.contains('plus-minus') && displayValue != '' && displayValue != '0') {
+            if (displayValue > 0) {
+                displayValue = `${parseFloat(displayValue) * -1}`
+                updateDisplay();
+            } else {
+                displayValue = `${parseFloat(displayValue) * -1}`
+                updateDisplay();
+            }
         }
     })
 }
