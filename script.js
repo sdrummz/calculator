@@ -17,6 +17,7 @@ const updateDisplay = function() {
 
 updateDisplay();
 
+// Calculations
 for (let i = 0; i <buttons.length; i++) {
     buttons[i].addEventListener('click', function() {
         if (buttons[i].classList.contains('digit')) {
@@ -36,18 +37,27 @@ for (let i = 0; i <buttons.length; i++) {
             operator = '';
             updateDisplay();
         } else if (buttons[i].classList.contains('operator')) {
-            oldValue = displayValue;
-            operator = buttons[i].value;
-            displayValue = '';
+            if (operator == '') {
+                oldValue = displayValue;
+                operator = buttons[i].value;
+                displayValue = '';
+            } else {
+                displayValue = `${operate(parseFloat(oldValue), parseFloat(displayValue), operator)}`;
+                operator = buttons[i].value;
+                updateDisplay();
+                oldValue = displayValue;
+                displayValue = '';
+            }
         } else if (buttons[i].classList.contains('equals') && oldValue != '' && operator != '') {
-            displayValue = `${operate(parseInt(oldValue), parseInt(displayValue), operator)}`;
+            displayValue = `${operate(parseFloat(oldValue), parseFloat(displayValue), operator)}`;
+            operator = '';
             updateDisplay();
-            console.log(displayValue)
+        } else if (buttons[i].classList.contains('decimal') && displayValue.indexOf('.') === -1) {
+            displayValue += buttons[i].value;
+            updateDisplay();
         }
     })
 }
-
-
 
 // Operations
 const operate = (a, b, op) => {
@@ -58,6 +68,10 @@ const operate = (a, b, op) => {
     } else if (op === '*') {
         return a * b;
     } else if (op === '/') {
-        return a / b;
+        if (b === 0) {
+            return `error`;
+        } else {
+            return a / b;
+        }
     }
 }
