@@ -6,4 +6,4 @@ Use this when out to dinner to impress friends while splitting the bill. "What a
 
 # Live Demo
 
-https://szglabs.github.io/calculator/
+https://sdrummz.github.io/calculator/
